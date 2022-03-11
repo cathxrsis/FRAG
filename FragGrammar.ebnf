@@ -1,0 +1,30 @@
+/*Overall statement of a FRAG sentence.*/
+FragStatement   ::= Conditions Subject Operator Relationship Measure
+
+Conditions      ::= ('When' EventCondition ';')? ('While' StateConditions ';')?
+
+EventCondition  ::= Variable 'becomes' ( Comparator )? Value
+
+StateConditions ::= (Variable 'is' ( Comparator )* Value ('AND')? )*
+
+Subject         ::= NounPhrase
+
+Operator        ::= ('must' | 'shall' | 'should' | 'may' | 'can' | 'will')
+
+Relationship    ::= ('have' | 'produce' | 'receive' | 'set') Variable PrepositionalActors
+
+PrepositionalActors ::= (Preposition Actor)*
+
+Actor           ::= NounPhrase
+
+Measures        ::= 'with' ('a(n)' Measurable 'of' Measure (AND)?)+
+
+Measurable      ::= ('value' | 'rate' | 'reaction' | 'range' | OtherMeasurable)
+
+Measure         ::= Comparator Value ('AND' Comparator Value)?
+
+Value           ::= String | Num (Units)?
+
+Variable        ::= NounPhrase
+/* Comparison operators for numerical values */
+Comparator      ::= '>' | '<' | '>=' | '<='

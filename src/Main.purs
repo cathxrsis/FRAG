@@ -1,10 +1,15 @@
 module Main where
 
+import Data.Lens.Lens
 import Prelude
 import Text.Parsing.Parser
+import Text.Parsing.Parser.Combinators
+import Text.Parsing.Parser.String
 
 import Data.Either (Either)
+import Data.Lens.Record (prop)
 import Data.List (List)
+import Data.Symbol (SProxy(..))
 import Data.Tuple (Tuple)
 import Effect (Effect)
 import Effect.Console (log)
@@ -12,36 +17,6 @@ import Effect.Console (log)
 main :: Effect Unit
 main = do
   log "🍝"
-
---FragStatement   ::= Conditions Subject Operator Relationship Measures
---
---Conditions      ::= ('When' EventCondition ';')? ('While' StateConditions ';')?
---
---EventCondition  ::= Variable 'becomes' ( Comparator )? Value
---
---StateConditions ::= (Variable 'is' ( Comparator )* Value ('AND')? )*
---
---Subject         ::= NounPhrase
---
---Operator        ::= ('must' | 'shall' | 'should' | 'may' | 'can' | 'will' |)
---
---Relationship    ::= ('have' | 'produce' | 'receive' | 'set') Variable PrepositionalActors
---
---PrepositionalActors ::= (Preposition Actor)*
---
---Actor           ::= NounPhrase
---
---Measures        ::= 'with' ('a(n)' Measurable 'of' Measure (AND)?)+
---
---Measurable      ::= ('value' | 'rate' | 'reaction' | 'range' | OtherMeasurable)
---
---Measure         ::= Comparator Value ('AND' Comparator Value)?
---
---Value           ::= String | Num (Units)?
---
---Variable        ::= NounPhrase
---
---Comparator      ::= '>' | '<' | '>=' | '<='
 
 data Temporality = EVENT | PHASE | UBIQUITY
 
@@ -53,6 +28,12 @@ type Units = Tuple (List Dim) (List Dim)
 
 type NumVal = {val :: Number, unit :: Units}
 
+--Access Optics
+_val :: forall a r. Lens' { val :: a | r } a
+_val = prop (SProxy :: SProxy "val")
+
+_unit :: forall a r. Lens' {unit :: a | r } a 
+_unit = prop (SProxy :: SProxy "unit") 
 type Value = Either NumVal String
 
 type EventCondition =
@@ -60,6 +41,15 @@ type EventCondition =
   , comparison :: Comparitor
   , value :: Value
   }
+
+_variable :: forall a r. Lens' {variable :: a | r } a
+_variable = prop (SProxy :: SProxy "variable")
+
+_comparison :: forall a r. Lens' {comparison :: a | r } a
+_comparison = prop (SProxy :: SProxy "comparison")
+
+_value :: forall a r. Lens' {value :: a | r} a
+_value = prop (SProxy :: SProxy "value")
 
 -- The severity of the statement. 
 data Severity = MUST | SHALL | SHOULD | MAY | CAN | WILL
@@ -90,6 +80,4 @@ type FragStatement =
 
 type FragParser = Parser String FragStatement
 
-parseConditions :: FragParser
-parseConditions  = do
-  
+--parseConditions :: FragParser
