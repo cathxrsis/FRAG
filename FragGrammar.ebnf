@@ -9,7 +9,7 @@ StateConditions ::= (Variable 'is' ( Comparator )* Value ('AND')? )*
 
 Subject         ::= NounPhrase
 
-Operator        ::= ('must' | 'shall' | 'should' | 'may' | 'can' | 'will')
+Operator        ::= ('must' | 'shall' | 'should' | 'may' | 'can')
 
 Relationship    ::= ('have' | 'produce' | 'receive' | 'set') Variable PrepositionalActors
 
@@ -26,5 +26,12 @@ Measure         ::= Comparator Value ('AND' Comparator Value)?
 Value           ::= String | Num (Units)?
 
 Variable        ::= NounPhrase
+
+/* FRAG Definitions -> Clauses used to define states and observable (data/energy/material) objects for reuse */
+
+FragDefinition ::= 'Where' Identifier (('is' StateConditions) | ('Has values of' DataDefinition))
+
+DataDefinition ::= 
+
 /* Comparison operators for numerical values */
 Comparator      ::= '>' | '<' | '>=' | '<='

@@ -18,22 +18,28 @@ main :: Effect Unit
 main = do
   log "🍝"
 
+-- Whether a behaviour is event based, phasic or ubiquitous
 data Temporality = EVENT | PHASE | UBIQUITY
 
+-- Numerical predicates, greater than etc.
 data Comparitor = GT | GTE | LT | LTE | E
 
+-- Physical Units (probably a better way of constructing)
 data Dim = METRES | KG | SECONDS | AMPS | MOLS
 
+-- Physical units of a value as two lists 
 type Units = Tuple (List Dim) (List Dim)
 
+-- A numerical value with physical units
 type NumVal = {val :: Number, unit :: Units}
 
---Access Optics
 _val :: forall a r. Lens' { val :: a | r } a
 _val = prop (SProxy :: SProxy "val")
 
 _unit :: forall a r. Lens' {unit :: a | r } a 
 _unit = prop (SProxy :: SProxy "unit") 
+
+-- A value with either an ID or a numerical representation (Vectors/matrices should be possible)
 type Value = Either NumVal String
 
 type EventCondition =
