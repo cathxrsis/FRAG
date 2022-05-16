@@ -5,9 +5,9 @@ FRAG is a tool for analysing systems and generating requirements. It was inspire
 
 In summary, FRAG has the following differences from EARS:
 
-- Semantic strength of keywords---*When*, *where* and *while* have different but stronger definitions.
+- Semantic strength of keywords---*when*, *where* and *while* have different but stronger definitions.
 
-- Removal of reified type information---No *if* keyword; that is left to the requirements management tool.
+- Removal of reified type information---No *if* keyword; metainfo about requirements is left to the requirements management tool.
 
 - Stronger definition of the grammar to allow for machine parsing.
 

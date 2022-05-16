@@ -1,13 +1,13 @@
 The FRAG Grammar
 ================
 
-This document is a quick reference guide to the FRAG. the FRAG comprises two types of sentence--- Statements and Definitions.
+This document is a quick reference guide to the FRAG. the FRAG comprises two types of sentence---Statements and Definitions.
 
 FRAG Statements
 ---------------
 
 
-![Railroad diagram of a FRAG statement]{diagram/FragStatement.png}
+![Railroad diagram of a FRAG statement](diagram/FragStatement.png)
 
 ``` EBNF
 
@@ -21,9 +21,13 @@ Conditions
 
   : 
 
-### Hint
+> In the case of human interaction, where we still want to remain abstract of the means of interaction, we can use the pattern 
 
-In the case of human interaction, 
+``` FRAG
+
+When the user desires the room temperature to change, 
+
+```
 
 Subject
 
@@ -37,7 +41,17 @@ Relationship
 
   : This part of the statement defines the relationship that the *subject* has with the *environment*, *peer systems* or *actors* when the conditions are true. This can be a static relationship (often referred to as a *non-functional* requirement.) or an active relationship
 
+### Conditions
 
+The conditions FRAGment conforms to the following pattern:
+
+![```Conditions ::= ('When' EventCondition ';')? ('While' StateConditions ';')?```](diagram/Conditions.png)
+
+``` FRAG
+
+Each Frag statement may have an EventCondition with an occurence of at most once
+
+```
 
 ### Operator
 
@@ -66,3 +80,5 @@ Can
 
 FRAG Definitions
 ----------------
+
+FRAG definitions are statements that are used to define 
