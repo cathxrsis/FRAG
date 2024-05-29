@@ -11,7 +11,7 @@ In summary, FRAG has the following differences from EARS:
 
 - Stronger definition of the grammar to allow for machine parsing.
 
-The definition of the FRAG can be found in [grammar.md]{docs/grammar.md}.
+The definition of the FRAG can be found in [grammar.md](docs/grammar.md).
 
 Features and Roadmap
 --------------------
