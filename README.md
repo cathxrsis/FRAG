@@ -9,17 +9,17 @@ In summary, FRAG has the following differences from EARS:
 
 - Removal of reified type information---No *if* keyword; metainfo about requirements is left to the requirements management tool.
 
-- Stronger definition of the grammar to allow for machine parsing.
+- Stronger definition of the grammar to aid comprehension and allow for machine parsing.
 
 The definition of the FRAG can be found in [grammar.md](docs/grammar.md).
 
 Features and Roadmap
 --------------------
 
-[] Defined Grammar and Cheatsheet
-[] Single statement syntax checking
-[] Single statement linting
-[] Autocompletion
-[] Multi-statement consistency checking
-[] Multi-statement linting
-[] Compilation to Olog or similar language
+- [ ] Defined Grammar and Cheatsheet
+- [ ] Single statement syntax checking
+- [ ] Single statement linting
+- [ ] Autocompletion
+- [ ] Multi-statement consistency checking
+- [ ] Multi-statement linting
+- [ ] Compilation to Olog or similar language
